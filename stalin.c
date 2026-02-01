@@ -2,10 +2,29 @@
 #include <stdio.h>
 #include "array.h"
 
+int sort_arr(int*, int);
+Array sortArr(Array*);
+
 /**
- * Sorts given array and returns new n as int
+ * @brief Sorts an array with stalin sort.
+ * @param array array to sort
+ * @return Array sorted array
  */
-int sort(int* arr, int n) {
+Array sortArr(Array* array) {
+    int* arr = array->arr;
+    int n = array->n;
+    n = sort_arr(arr, n);
+    return array_from(arr, n);
+}
+
+/**
+ * @brief Sorts an array with stalin sort.
+ * Modifies the existing array
+ * @param arr pointer to first element of the array
+ * @param n length of the array
+ * @return int new length of the sorted array
+ */
+int sort_arr(int* arr, int n) {
     int kill[n];
     int kill_n = 0;
 

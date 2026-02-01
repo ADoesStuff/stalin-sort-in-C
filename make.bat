@@ -1,4 +1,11 @@
+# clear previous outputs
 cls
+
+# compile C code
 gcc main.c stalin.c array.c -o main
+
+# run generated executable
 .\main
-del "C:\Users\alexs\Desktop\GLORY TO STALIN in C\main.exe"
+
+# remove 
+del main.exe
