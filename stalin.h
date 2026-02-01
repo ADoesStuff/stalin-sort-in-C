@@ -1,5 +1,8 @@
 #pragma once
 
+// #ifndef ARRAY_H
+// #define ARRAY_H
+
 #include "array.h"
 
 /**
@@ -17,3 +20,5 @@ Array sortArr(Array*);
  * @return int new length of the sorted array
  */
 int sort_arr(int*, int);
+
+// #endif

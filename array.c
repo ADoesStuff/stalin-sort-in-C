@@ -1,5 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <time.h>
 #include "array.h"
+#include <stdint.h>
 
 Array array_from(int*, int);
 
@@ -8,6 +12,26 @@ void print_arr(int*, int);
 
 int arrContains(Array, int);
 int arr_contains(int*, int, int);
+
+Array randomArr();
+void random_arr(int*, int);
+
+void init();
+void check();
+
+const int MAX_ARRAY_SIZE = 10;
+const int MIN_VAL = -20;
+const int MAX_VAL = +20;
+
+int initialized = 0;
+
+/**
+ * @brief Initializes the utility
+ */
+void init() {
+    initialized = 1;
+    srand(time(NULL));
+}
 
 /**
  * @brief Constructs an Array.
@@ -38,11 +62,14 @@ void printArr(Array array) {
  * @param n length of the array
  */
 void print_arr(int* arr, int n) {
-    printf("Array %p [", &arr);
-    for (int i = 0; i<n-1; i++){
-        printf("%d, ", arr[i]);
+    printf("Array %p [", (void*)arr);
+    for (int i=0; i<n; i++) {
+        printf("%d", arr[i]);
+        if (i != n - 1){
+            printf(", ");
+        }
     }
-    printf("%d]\n", arr[n-2]);
+    printf("]\n");
 }
 
 /**
@@ -75,4 +102,38 @@ int arr_contains(int* arr, int n, int el) {
         }
     }
     return 0;
+}
+
+/**
+ * @brief Returns an Array with random values and random length.
+ * Generates an array with random length from 0 to MAX_ARRAY_SIZE.
+ * And random values from MIN_VAL to MAX_VAL.
+ * @return Array random array as Array
+ */
+Array randomArr() {
+    check();
+    int n = rand()%(MAX_ARRAY_SIZE+1);
+    int *arr = malloc(n * sizeof *arr);
+    random_arr(arr, n);
+    return array_from(arr, n);
+}
+
+/**
+ * @brief Randomizes given array.
+ * Fills given array with random values from MIN_VAL to MAX_VAL.
+ * @param arr array to fill with random values
+ * @param n size of the array to fill
+ */
+void random_arr(int* arr, int n) {
+    check();
+    for(int i=0; i<n; i++) {
+        arr[i] = MIN_VAL + rand() % (MAX_VAL - MIN_VAL + 1);
+    }
+}
+
+void check() {
+    if(!initialized){
+        printf("Error: array utility is not initizlied yet.\n");
+        exit(1);
+    }
 }

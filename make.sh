@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+clear
+
 # Stop after any error
 set -e
 
@@ -10,6 +12,7 @@ if ! command -v gcc >/dev/null 2>&1; then
 fi
 
 # Compile C files
+#gcc -fsanitize=address main.c array.c stalin.c -o main
 gcc main.c array.c stalin.c -o main
 
 # Run compiled output

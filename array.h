@@ -1,5 +1,8 @@
 #pragma once
 
+// #ifndef ARRAY_H
+// #define ARRAY_H
+
 /**
  * @brief Struct representing an array.
  * Wraps a pointer to the first element of an array
@@ -9,6 +12,11 @@ typedef struct Array {
     int* arr;
     int n;
 } Array;
+
+/**
+ * @brief Initializes the utility.
+ */
+void init();
 
 /**
  * @brief Constructs an Array.
@@ -57,3 +65,21 @@ int arrContains(Array array, int el);
  * elemtn at least once; false otherwise.
  */
 int arr_contains(int* arr, int n, int el);
+
+/**
+ * @brief Returns an Array with random values and random length.
+ * Generates an array with random length from 0 to MAX_ARRAY_SIZE.
+ * And random values from MIN_VAL to MAX_VAL.
+ * @return Array random array as Array
+ */
+Array randomArr();
+
+/**
+ * @brief Randomizes given array.
+ * Fills given array with random values from MIN_VAL to MAX_VAL.
+ * @param arr array to fill with random values
+ * @param n size of the array to fill
+ */
+void random_arr(int* arr, int n);
+
+// #endif
