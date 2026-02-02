@@ -11,12 +11,18 @@ if ! command -v gcc >/dev/null 2>&1; then
     exit 1
 fi
 
+cd src
+
 # Compile C files
 #gcc -fsanitize=address main.c array.c stalin.c -o main
-gcc main.c array.c stalin.c -o main
+gcc ./main.c ./utils/array.c ./stalin/stalin.c -o ../out/main
 
 # Run compiled output
-./main
+../out/main
 
 # Remove executable
-rm -f main
+if [[ $1 != "keep_output" ]] ; then
+    rm -f ../out/main
+fi
+
+cd ..

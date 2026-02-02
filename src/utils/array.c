@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <time.h>
-#include "array.h"
+#include "../utils/array.h"
 #include <stdint.h>
 
 Array array_from(int*, int);
@@ -19,9 +19,9 @@ void random_arr(int*, int);
 void init();
 void check();
 
-const int MAX_ARRAY_SIZE = 10;
-const int MIN_VAL = -20;
-const int MAX_VAL = +20;
+const int MAX_ARRAY_SIZE = 20;
+const int MIN_VAL = -25;
+const int MAX_VAL = +25;
 
 int initialized = 0;
 
@@ -31,6 +31,30 @@ int initialized = 0;
 void init() {
     initialized = 1;
     srand(time(NULL));
+}
+
+/**
+ * @brief Checks if given array is sorted.
+ * @param arr Pointer to the first element of an a array
+ * @param n Length of the array
+ * @return Returns 1 if the array is sorted; 0 otherwise.
+ */
+int is_sorted(int* arr, int n) {
+    for(int i=1; i<n; i++) {
+        if(arr[i-1] > arr[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+/**
+ * @brief Checks if given array is sorted.
+ * @param array Array to check if it's sorted.
+ * @return Returns 1 if the array is sorted; 0 otherwise.
+ */
+int isSorted(Array array) {
+    return is_sorted(array.arr, array.n);
 }
 
 /**
@@ -62,14 +86,15 @@ void printArr(Array array) {
  * @param n length of the array
  */
 void print_arr(int* arr, int n) {
-    printf("Array %p [", (void*)arr);
+    printf("Array %p [%d]{", (void*)arr, n);
     for (int i=0; i<n; i++) {
         printf("%d", arr[i]);
         if (i != n - 1){
             printf(", ");
         }
     }
-    printf("]\n");
+    int sorted = is_sorted(arr, n);
+    printf("}(Sorted: %s)\n", sorted?"true":"false");
 }
 
 /**

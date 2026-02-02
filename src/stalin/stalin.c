@@ -1,18 +1,18 @@
 #include <limits.h>
 #include <stdio.h>
-#include "array.h"
+#include "../utils/array.h"
 
 int sort_arr(int*, int);
-Array sortArr(Array*);
+Array sortArr(Array);
 
 /**
  * @brief Sorts an array with stalin sort.
  * @param array array to sort
  * @return Array sorted array
  */
-Array sortArr(Array* array) {
-    int* arr = array->arr;
-    int n = array->n;
+Array sortArr(Array array) {
+    int* arr = array.arr;
+    int n = array.n;
     n = sort_arr(arr, n);
     return array_from(arr, n);
 }

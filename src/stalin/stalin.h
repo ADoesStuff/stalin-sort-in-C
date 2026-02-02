@@ -3,14 +3,14 @@
 // #ifndef ARRAY_H
 // #define ARRAY_H
 
-#include "array.h"
+#include "../utils/array.h"
 
 /**
  * @brief Sorts an array with stalin sort.
  * @param array array to sort
  * @return Array sorted array
  */
-Array sortArr(Array*);
+Array sortArr(Array);
 
 /**
  * @brief Sorts an array with stalin sort.

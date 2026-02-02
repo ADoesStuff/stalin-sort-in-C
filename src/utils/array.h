@@ -14,6 +14,21 @@ typedef struct Array {
 } Array;
 
 /**
+ * @brief Checks if given array is sorted.
+ * @param arr Pointer to the first element of an a array
+ * @param n Length of the array
+ * @return Returns 1 if the array is sorted; 0 otherwise.
+ */
+int is_sorted(int* arr, int n);
+
+/**
+ * @brief Checks if given array is sorted.
+ * @param array Array to check if it's sorted.
+ * @return Returns 1 if the array is sorted; 0 otherwise.
+ */
+int isSorted(Array array);
+
+/**
  * @brief Initializes the utility.
  */
 void init();
